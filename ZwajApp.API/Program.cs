@@ -10,7 +10,8 @@ builder.Services.AddDbContext<DataContext>(x => x.UseSqlite(connectionString));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddCors();
+builder.Services.AddCors();//sove domains problem 
+builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
@@ -27,5 +28,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-app.UseCors(x=>x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 app.Run();
