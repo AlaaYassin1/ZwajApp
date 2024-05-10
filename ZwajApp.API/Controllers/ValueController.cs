@@ -22,7 +22,7 @@ namespace ZwajApp.API.Controllers
             var values = await _context.values.ToListAsync();
             return Ok(values);
         }
-
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetValue(int id)
         {

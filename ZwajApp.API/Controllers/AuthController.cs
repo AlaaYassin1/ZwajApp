@@ -22,8 +22,7 @@ namespace ZwajApp.API.Controllers
             _config = config;
         }
 
-        [HttpPost]
-        [Route("/Register")]
+        [HttpPost("register")]
         public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
         {
             //validation(when [apicontroller] not existzx
