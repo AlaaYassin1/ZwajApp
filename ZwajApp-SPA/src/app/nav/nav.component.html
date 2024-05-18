@@ -24,10 +24,13 @@
   </ul>
 <!-- fa fa-user-o -->
 <!-- fa fa-sign-out -->
-  <div class="dropdown text-end ms-3">
-    <a *ngIf="loggedIn()" class="dropdown-toggle text-light nav-link"
-    style="letter-spacing:1px;font-weight:bold;font-family:'JF Flat';font-size:1.2rem">مرحبا بك</a>
-    <div class="dropdown-menu " >
+  <div dropdown class="dropdown text-end ms-3">
+    <a dropdownToggle *ngIf="loggedIn()" class="dropdown-toggle text-light nav-link"
+    style="letter-spacing:1px;font-weight:bold;font-family:'JF Flat';font-size:1.2rem">
+    مرحبا بك
+    {{authService.decodedToken?.unique_name | titlecase}}
+  </a>
+    <div class="dropdown-menu " *dropdownMenu>
       <a class="dropdown-item">
      ملفي الشخصي</a>
       <div class="dropdown-divider"></div>

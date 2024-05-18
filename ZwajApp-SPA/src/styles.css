@@ -2,13 +2,25 @@
 /* npm i bootstrap@4.1.1 font-awasome@4.7.0 --save */
 
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css"; 
+@import "../node_modules/font-awesome/css/font-awesome.css"; 
+@import "../node_modules/alertifyjs/build/css/alertify.min.css";
+@import "../node_modules/alertifyjs/build/css/themes/bootstrap.min.css"; 
+
+
+
 
 
 /* @import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css); */
 @font-face {font-family: "JF FLAT";src: url("./assets/fonts/JF-Flat-Regular.ttf");}
 @font-face {font-family:"ah-naskh-hadith" ;src: url("./assets/fonts/18410-ah-naskh-hadith.ttf");}
 @font-face {font-family:"Droid-Arabic-Kufi-1" ;src: url("./assets/fonts/Droid-Arabic-Kufi-1.ttf");}
+@font-face {font-family:"Droid-Sans-Arabic" ;src: url("./assets/fonts/Droid-Sans-Arabic.ttf");}
+@font-face {font-family:"Droid-Arabic-kufi" ;src: url("./assets/fonts/Droid-Arabic-Kufi.ttf");}
 @font-face {font-family:"ToyorAljanah" ;src: url("./assets/fonts/ToyorAljanah-Regular.otf");}
 
-
+/* Alertify.js we use it as a service in angular*/
+/* npm install alertifyjs --save */
+/* added js file in scripts at angular.jsons */
+/* "node_modules/alertifyjs/build/alertify.min.js" at scripts */
+/* css here in this file */
 

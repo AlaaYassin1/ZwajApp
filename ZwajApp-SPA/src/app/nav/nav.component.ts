@@ -2,39 +2,46 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+// import { BsDropdownModule } from 'ngx-bootstrap';
+
+
 import { AuthService } from '../_services/auth.service';
+import { AlertifyService } from '../_services/Alertify.service';
 
 
 @Component({
   selector: 'app-nav',
   standalone:true,
-  imports:[FormsModule,CommonModule],
+  imports:[FormsModule,CommonModule ],
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
   model:any={};
-  constructor(private authService:AuthService) { }
+  constructor(public authService:AuthService,private alertify:AlertifyService) { }
 
   ngOnInit() {
   }
 
   login(){
     this.authService.login(this.model).subscribe(
-      next=>{console.log('تم الدخول بنجاح')},
-      error=>{console.log('فشل في الدخول')}
+      next=>{
+       this.alertify.success('تم الدخول بنجاح')
+      },
+      error=>{
+      this.alertify.error('فشل في الدخول')
+      }
     )
   }
 
   loggedIn(){
-    const token=localStorage.getItem('token');
-    return !! token;
+  return this.authService.loggedIn();
   }
 
   loggedOut(){
     localStorage.removeItem('token');
-    console.log('تم الخروج');
-
+   this.alertify.message('تم الخروج');
   }
 
+  
 }

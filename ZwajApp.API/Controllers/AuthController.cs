@@ -44,6 +44,8 @@ namespace ZwajApp.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
         {
+
+            throw new Exception("Api Says Nooooo!");
             var userFromRepo = await _repo.Login(userForLoginDto.userName.ToLower(), userForLoginDto.password);
             if (userFromRepo == null) return Unauthorized();
             //token payload(data)
@@ -51,6 +53,7 @@ namespace ZwajApp.API.Controllers
             {
                 new Claim(ClaimTypes.NameIdentifier,userFromRepo.Id.ToString()),
                 new Claim(ClaimTypes.Name,userFromRepo.userName)
+
 
             };
 
