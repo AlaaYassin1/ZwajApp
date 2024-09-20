@@ -1,7 +1,8 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ZwajApp.API.Controllers;
-
+[Authorize]
 [ApiController]
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase
@@ -17,7 +18,7 @@ public class WeatherForecastController : ControllerBase
     {
         _logger = logger;
     }
-
+    [AllowAnonymous]
     [HttpGet(Name = "GetWeatherForecast")]
     public IEnumerable<WeatherForecast> Get()
     {
