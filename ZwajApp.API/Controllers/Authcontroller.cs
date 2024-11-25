@@ -15,13 +15,13 @@ namespace ZwajApp.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class Authcontroller : ControllerBase
+    public class AuthController : ControllerBase
     {
         private readonly IAuthRepository _repo;
         private readonly IConfiguration _config;
 
 
-        public Authcontroller(IAuthRepository repo, IConfiguration config)
+        public AuthController(IAuthRepository repo, IConfiguration config)
         {
             _repo = repo;
             _config = config;
