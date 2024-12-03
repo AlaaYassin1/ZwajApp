@@ -2,15 +2,11 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 import { importProvidersFrom } from '@angular/core';
 import { appConfig } from './app/app.config';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { AuthService } from './app/_services/auth.service';
 
 bootstrapApplication(AppComponent, {
-  providers: [
-    importProvidersFrom(HttpClientModule),
-    AuthService,
-    ...appConfig.providers,
-  ],
+  providers: [importProvidersFrom(HttpClientModule), ...appConfig.providers],
 }).catch((err) => console.error(err));
 
 //   لماذا هذا التعديل:

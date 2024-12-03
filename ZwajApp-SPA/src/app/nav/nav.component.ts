@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../_services/auth.service';
 import { CommonModule } from '@angular/common';
+import { AlertifyService } from '../_services/alertify.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+// import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @Component({
   selector: 'app-nav',
@@ -13,28 +16,37 @@ import { CommonModule } from '@angular/common';
 })
 export class NavComponent implements OnInit {
   model: any = {};
-  constructor(private authservice: AuthService) {}
+  jwtHelper = new JwtHelperService();
 
-  ngOnInit() {}
+  constructor(
+    public authservice: AuthService,
+    private alertify: AlertifyService
+  ) {}
+
+  ngOnInit() {
+    const token = localStorage.getItem('token');
+    this.authservice.decodedToken = this.jwtHelper.decodeToken(token!);
+    console.log(this.authservice.decodedToken);
+    console.log('nav');
+  }
 
   login() {
     this.authservice.login(this.model).subscribe(
       (next) => {
-        console.log('done');
+        this.alertify.success('تم الدخول بنجاح');
       },
       (error) => {
-        console.log(error);
+        this.alertify.error(error);
       }
     );
   }
 
   loggedIn() {
-    const token = localStorage.getItem('token');
-    return !!token;
+    return this.authservice.loggedIn();
   }
 
   loggedOut() {
     localStorage.removeItem('token');
-    console.log('out');
+    this.alertify.message('تم الخروج');
   }
 }
