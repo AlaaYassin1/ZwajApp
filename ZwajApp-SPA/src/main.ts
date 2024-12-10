@@ -3,10 +3,14 @@ import { AppComponent } from './app/app.component';
 import { importProvidersFrom } from '@angular/core';
 import { appConfig } from './app/app.config';
 import { HttpClientModule, provideHttpClient } from '@angular/common/http';
-import { AuthService } from './app/_services/auth.service';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 bootstrapApplication(AppComponent, {
-  providers: [importProvidersFrom(HttpClientModule), ...appConfig.providers],
+  providers: [
+    importProvidersFrom(HttpClientModule),
+    provideAnimations(),
+    ...appConfig.providers,
+  ],
 }).catch((err) => console.error(err));
 
 //   لماذا هذا التعديل:

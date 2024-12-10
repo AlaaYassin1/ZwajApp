@@ -4,14 +4,19 @@ import { AuthService } from '../_services/auth.service';
 import { CommonModule } from '@angular/common';
 import { AlertifyService } from '../_services/alertify.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
-// import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css'],
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [
+    FormsModule,
+    CommonModule,
+    
+    BsDropdownModule,
+  ],
   providers: [AuthService],
 })
 export class NavComponent implements OnInit {
